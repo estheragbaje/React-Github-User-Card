@@ -58,6 +58,7 @@ import axios from "axios";
 class Usercard extends React.Component {
   constructor(props) {
     super(props);
+    //state of users data
     this.state = {
       isLoading: true,
       data: {},
@@ -67,6 +68,7 @@ class Usercard extends React.Component {
 
   componentDidMount() {
     axios
+      //users api
       .get("https://api.github.com/users/estheragbaje")
       .then(respone => {
         this.setState({ data: respone.data, isLoading: false });
