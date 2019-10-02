@@ -2,16 +2,16 @@ import React from "react";
 import "./App.css";
 import Usercard from "./Usercard";
 import UserFollowerCard from "./UserFollowerCard";
-import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { ThemeProvider, CSSReset, Box } from "@chakra-ui/core";
 
 function App() {
   return (
     <ThemeProvider>
       <CSSReset />
-      <div className="App">
+      <Box bg="gray.100">
         <Usercard />
         <UserFollowerCard />
-      </div>
+      </Box>
     </ThemeProvider>
   );
 }

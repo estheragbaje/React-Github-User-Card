@@ -31,7 +31,7 @@ class UserFollowerCard extends React.Component {
       return <div>Ooop! There was an error</div>;
     }
     return (
-      <Stack spacing="40px">
+      <Stack spacing="40px" py="40px">
         {this.state.data.map(item => (
           <Stack isInline maxW="400px" mx="auto">
             <Image size="80px" src={item.avatar_url} />
@@ -43,6 +43,7 @@ class UserFollowerCard extends React.Component {
                 size="sm"
                 as="a"
                 href={item.html_url}
+                variantColor="blue"
               >
                 Check Profile
               </Button>
