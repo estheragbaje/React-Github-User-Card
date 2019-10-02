@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Box, Stack, Button, Image, Heading } from "@chakra-ui/core";
 
 class UserFollowerCard extends React.Component {
   constructor(props) {
@@ -29,15 +30,27 @@ class UserFollowerCard extends React.Component {
     if (this.state.hasError === true) {
       return <div>Ooop! There was an error</div>;
     }
-    return this.state.data.map(item => (
-      <div>
-        <div>
-          <img src={item.avatar_url} />
-          <h3>{item.login}</h3>
-        </div>
-        <button>Check Profile</button>
-      </div>
-    ));
+    return (
+      <Stack spacing="40px">
+        {this.state.data.map(item => (
+          <Stack isInline maxW="400px" mx="auto">
+            <Image size="80px" src={item.avatar_url} />
+            <Box>
+              <Heading size="sm">{item.login}</Heading>
+              <Button
+                target="__blank"
+                marginTop={3}
+                size="sm"
+                as="a"
+                href={item.html_url}
+              >
+                Check Profile
+              </Button>
+            </Box>
+          </Stack>
+        ))}
+      </Stack>
+    );
   }
 }
 

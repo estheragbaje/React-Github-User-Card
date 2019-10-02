@@ -1,59 +1,15 @@
 import React from "react";
 import axios from "axios";
-
-// const usercardApi = "https://api.github.com/users/estheragbaje";
-
-// export default class Usercard extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       users: []
-//     };
-//   }
-
-//   //   componentDidMount() {
-//   //     axios.get(usercardApi).then(response => {
-//   //       //   console.log(response.data);
-//   //       this.setState({ users: response.data })
-//   //       );
-//   //     });
-
-//   componentDidMount() {
-//     axios.get(usercardApi).then(response => {
-//       this.setState({ todos: response.data });
-//     });
-//   }
-
-//   render() {
-//     // const followersArray = [
-//     //   "tetondan",
-//     //   "dustinmyers",
-//     //   "justsml",
-//     //   "luishrd",
-//     //   "bigknell",
-//     //   "ladrillo",
-//     //   "estheragbaje"
-//     // ];
-//     return (
-//       <div>
-//         <div>
-//           <img src={this.props.avatar_url} alt={this.props.name} />
-//           <h3>{this.props.name}</h3>
-//         </div>
-//         <div>
-//           <p>{this.props.location}</p>
-//           <p>{this.props.email}</p>
-//           <p>{this.props.created_at}</p>
-//         </div>
-//         <div>
-//           <p>{this.props.followers}</p>
-//           <p>{this.props.public_repos}</p>
-//           <p>{this.props.following}</p>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+import {
+  Flex,
+  Image,
+  Text,
+  Box,
+  Stack,
+  Stat,
+  StatLabel,
+  StatNumber
+} from "@chakra-ui/core";
 
 class Usercard extends React.Component {
   constructor(props) {
@@ -98,22 +54,46 @@ class Usercard extends React.Component {
       return <div>Has Error</div>;
     }
     return (
-      <div>
-        <div>
-          <img src={avatar_url} alt={name} />
-          <h3>{name}</h3>
-        </div>
+      <Box>
+        <Flex
+          justify="space-between"
+          align="center"
+          maxWidth="300px"
+          margin="auto"
+          bg="gray.100"
+        >
+          <Image size="100px" src={avatar_url} alt={name} />
+          <Text>{name}</Text>
+        </Flex>
+
         <div>
           <p>{location}</p>
           <p>{email}</p>
           <p>{created_at}</p>
         </div>
-        <div>
-          <p>{followers}</p>
-          <p>{public_repos}</p>
-          <p>{following}</p>
-        </div>
-      </div>
+        <Stack
+          maxWidth="500px"
+          mx="auto"
+          isInline
+          spacing="30px"
+          align="center"
+        >
+          <Stat>
+            <StatLabel>Followers</StatLabel>
+            <StatNumber>{followers}</StatNumber>
+          </Stat>
+
+          <Stat>
+            <StatLabel>Repos</StatLabel>
+            <StatNumber>{public_repos}</StatNumber>
+          </Stat>
+
+          <Stat>
+            <StatLabel>Following</StatLabel>
+            <StatNumber>{following}</StatNumber>
+          </Stat>
+        </Stack>
+      </Box>
     );
   }
 }
