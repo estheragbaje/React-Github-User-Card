@@ -21,4 +21,24 @@ class UserFollowerCard extends React.Component {
         this.setState({ hasError: true });
       });
   }
+
+  render() {
+    if (this.state.isLoading === true) {
+      return <div>Loading...</div>;
+    }
+    if (this.state.hasError === true) {
+      return <div>Ooop! There was an error</div>;
+    }
+    return this.state.data.map(item => (
+      <div>
+        <div>
+          <img src={item.avatar_url} />
+          <h3>{item.login}</h3>
+        </div>
+        <button>Check Profile</button>
+      </div>
+    ));
+  }
 }
+
+export default UserFollowerCard;
